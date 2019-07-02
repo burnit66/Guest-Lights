@@ -1,0 +1,25 @@
+{
+  "name": "guest-lights",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burnit66/Guest-Lights.git"
+  },
+  "author": "Joe Burnett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/burnit66/Guest-Lights/issues"
+  },
+  "homepage": "https://github.com/burnit66/Guest-Lights#readme"
+}

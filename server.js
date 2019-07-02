@@ -1,29 +1,38 @@
-var https = require('https');
+const https = require('https')
+const express = require('express')
+const app = express()
+const port = 3000
 
-var options = {
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen(
+    port, () => console.log(`Example app listening on port ${port}!`)
+)
+
+const options = {
   'method': 'GET',
   'hostname': 'na.lightify-api.com/oauth2',
-  // /authorize?client_id=&state={{state}}&redirect_uri=http://your.server.com/&response_type=code
+  //INTO PATH /authorize?client_id=&state={{state}}&redirect_uri=http://your.server.com/&response_type=code
   'path': '',
   'headers': {
   }
-};
+}
 
-var req = https.request(options, function (res) {
-  var chunks = [];
+const req = https.request(options, function (res) {
+    const chunks = []
 
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
+    res.on("data", function (chunk) {
+        chunks.push(chunk)
+    })
 
-  res.on("end", function (chunk) {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
+    res.on("end", function (chunk) {
+        const body = Buffer.concat(chunks)
+        console.log(body.toString())
+    })
 
-  res.on("error", function (error) {
-    console.error(error);
-  });
-});
+    res.on("error", function (error) {
+        console.error(error)
+    })
+})
 
-req.end();
+req.end()
