@@ -1,10 +1,11 @@
+require('dotenv').config()
 const https = require('https')
 
 const options = {
     'method': 'GET',
     'hostname': 'na.lightify-api.com/oauth2',
     //INTO PATH /authorize?client_id=&state={{state}}&redirect_uri=http://your.server.com/&response_type=code
-    'path': '',
+    'path': '/authorize?client_id=' + process.env.CLIENT_ID + '&state={{state}}&redirect_uri=' + process.env.REDIRECT_URI + '&response_type=code',
     'headers': {
     }
   }
