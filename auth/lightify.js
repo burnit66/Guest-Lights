@@ -10,7 +10,6 @@ const options = {
     }
 }
 
-
 const req = https.request(options, function (res) {
     const chunks = []
 
