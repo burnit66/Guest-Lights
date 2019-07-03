@@ -29,4 +29,4 @@ const req = https.request(options.hostname + options.path, function (res) {
 
 req.end()
 
-module.exports.req = req
+module.exports.options = options

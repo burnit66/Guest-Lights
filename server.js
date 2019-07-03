@@ -5,14 +5,16 @@ const app = express()
 var PORT = process.env.PORT || 3000
 
 const myModule = require('./auth/lightify')
-const req1 = myModule.req
+const options = myModule.options
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/views/index.html'))
 })
 
-router.get('/lights/redirect', (req, res) => {
-    res.send(req1)
+router.get('/auth/lights', (req, res) => {
+    res.statusCode = 302;
+    res.setHeader('Location', options.hostname + options.path);
+    res.end();
 })
 
 app.use('/', router)
