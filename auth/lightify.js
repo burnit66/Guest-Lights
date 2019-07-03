@@ -3,18 +3,18 @@ const https = require('https')
 
 const options = {
     'method': 'GET',
-    'hostname': 'na.lightify-api.com/oauth2',
-    //INTO PATH /authorize?client_id=&state={{state}}&redirect_uri=http://your.server.com/&response_type=code
-    'path': '/authorize?client_id=' + process.env.CLIENT_ID + '&state={{state}}&redirect_uri=' + process.env.REDIRECT_URI + '&response_type=code',
+    'hostname': 'https://na.lightify-api.com/oauth2',
+    'path': '/authorize?client_id=' + process.env.CLIENT_ID + '&state=12345&redirect_uri=' + process.env.REDIRECT_URI + '&response_type=code',
     'headers': {
     }
 }
 
-const req = https.request(options, function (res) {
+const req = https.request(options.hostname + options.path, function (res) {
     const chunks = []
 
     res.on("data", function (chunk) {
         chunks.push(chunk)
+        console.log(chunks)
     })
 
     res.on("end", function (chunk) {
@@ -28,3 +28,5 @@ const req = https.request(options, function (res) {
 })
 
 req.end()
+
+module.exports.req = req
